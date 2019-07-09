@@ -22,3 +22,14 @@ kits.formateDate = function () {
   s = s < 10 ? '0' + s : s;
   return y + '- ' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
 }
+
+
+// 封装一个可以生成唯一ID的函数（方法）
+kits.primaryKey = function () {
+  // 我们通过时间戳+一个大范围的随机数来生成id
+  let now = Date.now();//得到从1970年到现在的总的毫秒数
+  // 为了防止在1毫秒内生成很多个id，我们再加上一个大范围的随机数
+  let r = kits.randomInt(100000, 999999);
+  // 把得到的两组数字拼接起来
+  return now + '' + r;
+}
