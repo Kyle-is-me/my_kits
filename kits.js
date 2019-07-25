@@ -33,3 +33,22 @@ kits.primaryKey = function () {
   // 把得到的两组数字拼接起来
   return now + '' + r;
 }
+
+
+// 封装一个通过url获取id,并将键值对抓换成对象的方法
+kits.getUrlPramas = function () {
+  let prama = location.search.substr(1);
+  // 将键值对之间的&去除
+  let arr = prama.split('&');
+  // 遍历数组，将键值对之间的=去掉，存到对象中
+  let obj = {};
+  // for(let i = 0 ; i< arr.length;i++){
+  //   let temp = arr[i].split('=');
+  //   obj[temp[0]] = temp[i];
+  // }
+  arr.forEach(e => {
+    let temp = e.split('=');
+    obj[temp[0]] = temp[1];
+  })
+  return obj;
+};
